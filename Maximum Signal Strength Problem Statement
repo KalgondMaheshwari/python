@@ -1,0 +1,30 @@
+def max_signal_strength(n, readings, k):
+
+        n: Number of readings
+        readings: List of signal values
+        k: Size of the window
+    
+    Returns:
+        Maximum sum of k consecutive elements
+    
+    window_sum = sum(readings[:k])
+    max_sum = window_sum
+    
+    for i in range(k, n):
+        window_sum = window_sum - readings[i - k] + readings[i]
+        max_sum = max(max_sum, window_sum)
+    
+    return max_sum
+
+
+def main():
+    n = int(input())
+    readings = list(map(int, input().split()))
+    k = int(input())
+    
+    result = max_signal_strength(n, readings, k)
+    print(result)
+
+
+if __name__ == "__main__":
+    main()
